@@ -49,7 +49,7 @@
 <form method="post" action="<?=base_url('admin/register')?>" id="quickForm">
                 <div class="card-body" >
                 <div class="text-center">
-                <img class="" src="aset/gambar/logo.png"   height="100" width="180">
+                <img class="" src="<?=base_url()?>aset/gambar/logo.png"   height="100" width="180">
                 </div>
                 <br><br>
                 <div class="form-group">

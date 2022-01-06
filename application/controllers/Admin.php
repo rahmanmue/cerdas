@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
-	// public $user_id = $this->session->userdata('user_id');
+	
 	
 	public function __construct()
     {
@@ -15,17 +15,25 @@ class Admin extends CI_Controller {
 	
 	public function login()
 	{
-		// if ($user_id){
-		// 	// redirect('admin');
-		// }
 
+		$user_id = $this->session->userdata('user_id');
+		if($user_id){
+			if($this->M_User->detail($user_id)->status == 'admin'){
+				redirect('video');
+			}else if($this->M_User->detail($user_id)->status == 'admin'){
+				redirect('siswa');
+		}else{
+			$this->load->view('home');
+		}
+	
+		}
+		
 		
 		$this->form_validation->set_rules('email','Email','required|valid_email');
-        $this->form_validation->set_rules('password', 'password', 'required|min_length[6]');
+        $this->form_validation->set_rules('password', 'password', 'required|min_length[3]');
    
 		if($this->form_validation->run() == FALSE){
-		
-		$this->load->view('login.php');
+			$this->load->view('login.php');
 		} else {
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
@@ -38,20 +46,28 @@ class Admin extends CI_Controller {
 			];
 
 			$this->session->set_userdata($dataLogin);
-			//pindahkan ke halaman home
-			redirect('welcome');
+			
+			
+				if($this->M_User->detail($dataLogin['user_id'])->status == 'admin'){
+					redirect('video');
+				}else{
+					redirect('siswa');
+				}
+
 
 			}else{
 
-				$dataPesan = [
-					'alert' => 'alert-danger',
+				$data = [
 					'pesan' => 'Email atau Password yang anda masukan salah'
 				];
 
-			$this->session->set_flashdata($dataPesan);
+			$this->session->set_flashdata($data);
+			$this->session->set_userdata($data);
+			$this->session->mark_as_flash($data);
 			//tampilkan halaman login
+			// $this->load->view('login.php',$data);
 			redirect('admin/login');
-			}
+		}
 
 	  	}
 	}
@@ -71,7 +87,7 @@ class Admin extends CI_Controller {
 			'nama' => $this->input->post('nama',true),
 			'email' => $this->input->post('email',true),
 			'password' => $this->password->hash($this->input->post('password',true)),
-			'status'=>'admin'
+			'status'=>'siswa'
 		];
 
 		$this->M_User->tambah($data);
@@ -86,7 +102,8 @@ class Admin extends CI_Controller {
 	{
 		$dataLogin = ['user_id','nama'];
 		$this->session->unset_userdata($dataLogin);
-		redirect('login_u');
+		$this->session->sess_destroy();
+		redirect('home');
 	}
 
 

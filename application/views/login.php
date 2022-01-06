@@ -48,6 +48,14 @@
 <table border="">
 <td>
 <form method="post" action="" id="quickForm">
+<?php if($this->session->flashdata()){
+              echo"
+              <div class='alert alert-danger'><strong>Opps.. </strong>".$this->session->flashdata('pesan')."</div>
+      ";
+      
+      // print_r($this->session->flashdata('pesan'));
+      
+      }?>
                 <div class="card-body"style="width: 24rem;" >
                 <div class="text-center">
                 <img class="" src="<?=base_url()?>aset/gambar/logo.png"   height="100" width="180">
