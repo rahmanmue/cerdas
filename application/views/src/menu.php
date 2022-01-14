@@ -73,12 +73,21 @@
             <?php
                if ($level == 'admin'){ ?>
 
+              <li class="nav-item active" >
+                <a href="<?=base_url()?>mapel" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mata Pelajaran</p>
+                  </a>
+                </li>
+
                 <li class="nav-item active" >
                 <a href="latihankelas.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pembahasan</p>
                   </a>
                 </li>
+
+                
 
                <?php } else { 
                  for ($i=1; $i<=6; $i++) {
@@ -145,15 +154,9 @@
             </a>
 			<ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="game.html" class="nav-link active">
+                <a href="game.html" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Aritmatika</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="logika.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Logika</p>
                 </a>
               </li>
 			  </ul>
