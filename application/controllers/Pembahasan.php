@@ -8,7 +8,7 @@ class Pembahasan extends CI_Controller {
       parent::__construct();
     //   login();
     //   onlySuperAdmin();
-      $this->load->Model(['M_Pembahasan','M_Mapel']);
+      $this->load->Model(['M_Pembahasan','M_Mapel','M_Materi']);
    }
 
 	public function index()
@@ -16,7 +16,7 @@ class Pembahasan extends CI_Controller {
 		$template = 'index';
 		$listPembahasan = $this->M_Pembahasan->list();
 		$data=[
-		'judul'=>'Pembahasan',
+		'title'=>'Pembahasan',
 		'listPembahasan'=> $listPembahasan,
 		'content'=>'admin/list_pembahasan'
 		];
@@ -27,10 +27,7 @@ class Pembahasan extends CI_Controller {
  public function tambah(){
     $template = 'index';
 
-    $this->form_validation->set_rules('tema', 'Tema', 'required');
     $this->form_validation->set_rules('kelas', 'Kelas', 'required');
-    $this->form_validation->set_rules('subtema', 'Sub Tema', 'required');
-    $this->form_validation->set_rules('pembelajaran', 'Pembelajaran', 'required');
     $this->form_validation->set_rules('soal', 'Soal', 'required');
     $this->form_validation->set_rules('pilihan_A', 'Pilihan A', 'required');
     $this->form_validation->set_rules('pilihan_B', 'Pilihan B', 'required');
@@ -43,6 +40,7 @@ class Pembahasan extends CI_Controller {
           'title'=>'Tambah Pembahasan',
           'content'=>'admin/form_pembahasan',
           'mapel'=>$this->M_Mapel->getAll(),
+          'listMateri' => $this->M_Materi->list(),
           'action'=>base_url('pembahasan/tambah'),
           'button'=>'Tambah'
        ];
@@ -50,15 +48,13 @@ class Pembahasan extends CI_Controller {
     }else{
        $data=[
            'kelas'=>$this->input->post('kelas',true),
-           'tema'=>$this->input->post('tema',true),
-           'subtema'=>$this->input->post('subtema',true),
-           'pembelajaran'=>$this->input->post('pembelajaran',true),
            'soal'=>$this->input->post('soal',true),
            'id_mapel'=>$this->input->post('id_mapel',true),
-           'pilihan_A'=>$this->input->post('pilihan_A',true),
-           'pilihan_B'=>$this->input->post('pilihan_B',true),
-           'pilihan_C'=>$this->input->post('pilihan_C',true),
+           'pilihan_A'=>'A. '. $this->input->post('pilihan_A',true),
+           'pilihan_B'=>'B. '. $this->input->post('pilihan_B',true),
+           'pilihan_C'=>'C. '. $this->input->post('pilihan_C',true),
            'jawaban'=>$this->input->post('jawaban',true),
+           'pembahasan'=>$this->input->post('pembahasan',true),
            'gambar'=>$this->M_Pembahasan->uploadGambar()
        ];
 
@@ -73,10 +69,7 @@ class Pembahasan extends CI_Controller {
  public function edit(){
     $template = 'index';
 
-    $this->form_validation->set_rules('tema', 'Tema', 'required');
     $this->form_validation->set_rules('kelas', 'Kelas', 'required');
-    $this->form_validation->set_rules('subtema', 'Sub Tema', 'required');
-    $this->form_validation->set_rules('pembelajaran', 'Pembelajaran', 'required');
     $this->form_validation->set_rules('soal', 'Soal', 'required');
     $this->form_validation->set_rules('pilihan_A', 'Pilihan A', 'required');
     $this->form_validation->set_rules('pilihan_B', 'Pilihan B', 'required');
@@ -87,7 +80,8 @@ class Pembahasan extends CI_Controller {
 		$data=[
 			'title'=>'Edit Pembahasan',
 			'content'=>'admin/form_pembahasan',
-            'mapel'=>$this->M_Mapel->getAll(),
+         'mapel'=>$this->M_Mapel->getAll(),
+         'listMateri' => $this->M_Materi->list(),
 			'pembahasan'=>$this->M_Pembahasan->detail($this->input->post('id_pembahasan')),
 			'action'=>base_url('pembahasan/edit'),
 			'button'=>'Edit'
@@ -97,15 +91,14 @@ class Pembahasan extends CI_Controller {
     }else{
         $data=[
             'kelas'=>$this->input->post('kelas',true),
-            'tema'=>$this->input->post('tema',true),
-            'subtema'=>$this->input->post('subtema',true),
-            'pembelajaran'=>$this->input->post('pembelajaran',true),
+            'id_materi'=>$this->input->post('pembelajaran',true),
             'soal'=>$this->input->post('soal',true),
             'id_mapel'=>$this->input->post('id_mapel',true),
             'pilihan_A'=>$this->input->post('pilihan_A',true),
             'pilihan_B'=>$this->input->post('pilihan_B',true),
             'pilihan_C'=>$this->input->post('pilihan_C',true),
             'jawaban'=>$this->input->post('jawaban',true),
+            'pembahasan'=>$this->input->post('pembahasan',true),
             'gambar'=>$this->M_Pembahasan->uploadGambar() 
         ];
 

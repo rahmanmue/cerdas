@@ -76,7 +76,7 @@ html {scroll-behavior:smooth;}
 						<li class="lead"><a href="#beasiswa" style="color: white; margin-right: 10px;">Beasiswa</a></li>
 						<li class="lead"><a href="#video" style="color: white; margin-right: 10px;">Video</a></li>
 						<li class="lead"><a href="#testimoni" style="color: white; margin-right: 10px;">Testimoni</a></li>
-						<li class="lead"><a href="<?=base_url()?>admin/login" style="color: white; margin-right: 10px;">Login</a></li>
+						<li class="lead"><a href="<?=base_url()?>login" style="color: white; margin-right: 10px;">Login</a></li>
 						<li class="lead"><a href="#info" style="color: white; margin-right: 30px;">Info</a></li>
 					</ul>
 

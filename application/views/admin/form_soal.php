@@ -1,3 +1,5 @@
+
+ 
  <!-- Awal Card Form -->
  <div class="card mt-3">
       <div class="card-header bg-dark text-white">
@@ -6,21 +8,24 @@
       <div class="card-body">
           <form method="post" action="<?=$action?>" enctype="multipart/form-data">
             <div class="row">
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-12">
             <label>Kelas</label>
             <input type="number" min="1" max="6" name="kelas" value="<?= set_value('kelas', $soal->kelas ?? '');?>" class="form-control" placeholder="Masukan kelas ..." required>
           </div>
-          <div class="form-group col-md-3">
-            <label>Tema</label>
-            <input type="number" min="1" name="tema" value="<?= set_value('tema', $soal->tema ?? '');?>" class="form-control" placeholder="Masukan Tema ..." required>
-          </div>
-        <div class="form-group col-md-3">
-            <label>Subtema</label>
-            <input type="number" min="1" name="subtema" value="<?= set_value('subtema', $soal->subtema ?? '');?>" class="form-control" placeholder="Masukan Sub Tema ..." required>
-          </div>
-        <div class="form-group col-md-3">
-            <label>Pembelajaran</label>
-            <input type="number" min="1" name="pembelajaran" value="<?= set_value('pembelajaran', $soal->pembelajaran ?? '');?>" class="form-control" placeholder="Masukan Pembelajaran ..." required>
+          <div class="form-group col-md-12">
+            <label>Materi Pembelajaran</label>
+            <select class="form-control" name="id_materi">
+              <?php foreach ($listMateri as $m) { ?>
+                <option value="<?=$m->id_materi?>"
+                <?php if ($button == "Edit"){
+                      ($soal->id_materi == $m->id_materi ) ? "selected": '';
+                }?>>
+                
+                Tema <?=$m->tema?> Subtema <?=$m->subtema?> Pembelajaran <?=$m->pembelajaran?>
+              
+              </option>
+              <?php } ?>
+            </select>
           </div>
         
 
@@ -68,7 +73,7 @@
 
             <div class="form-group col-md-12">
               <label>Soal</label>
-              <textarea class="form-control" name="soal"  placeholder="Masukan Soal"><?= $soal->soal ?? '';?></textarea>
+              <textarea class="form-control" id="soal" rows="7" name="soal"  placeholder="Masukan Soal"><?= $soal->soal ?? '';?></textarea>
             </div>
 
           <div class="form-group col-md-12">
@@ -89,18 +94,20 @@
           </div>
 
           <div class="form-group col-md-12">
+         
             <label>Jawaban</label>
             <select class="form-control" name="jawaban">
-                <option value="pilihan_A">A</option>
-                <option value="pilihan_B">B</option>
-                <option value="pilihan_C">C</option>
-                <option value="pilihan_D">D</option>
+                <option value="pilihan_A" <?= $button == 'Edit' ? ($soal->jawaban == 'pilihan_A') ? 'selected' : '' : ''; ?>>A</option>
+                <option value="pilihan_B"   <?=  $button == 'Edit' ? ($soal->jawaban == 'pilihan_B') ? 'selected' : '' : ''; ?>>B</option>
+                <option value="pilihan_C"  <?=  $button == 'Edit' ? ($soal->jawaban == 'pilihan_C') ? 'selected' : '' : ''; ?> >C</option>
+                <option value="pilihan_D"  <?=  $button == 'Edit' ? ($soal->jawaban == 'pilihan_D') ? 'selected' : '' : ''; ?>>D</option>
             </select>
           </div>
 
           <input type='hidden' name ='gambarLama' value="<?=$soal->gambar??''?>">
           <input type="hidden" name='id_soal' value="<?= $soal->id_soal ?? '';?>"> 
           <br>
+
   
           <button type="submit" class="btn btn-success mr-2" name="bsimpan"><?= $button ?></button>
           <button type="reset" class="btn btn-danger" name="breset">Kosongkan</button>

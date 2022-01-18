@@ -16,9 +16,6 @@
           <th scope="col">No</th>
           <th scope="col">Mata Pelajaran</th>
           <th scope="col">Kelas</th>
-          <th scope="col">Tema</th>
-          <th scope="col">Sub Tema</th>
-          <th scope="col">Pembelajaran</th>
           <th scope="col"><center>Aksi</center></th>
           </tr>
         </thead>
@@ -31,9 +28,6 @@
           <th scope="row"><?= $no; ?></th>
           <td><?= $this->M_Mapel->detail($p->id_mapel)->nama_mapel; ?></td>
           <td><?= $p->kelas; ?></td>
-          <td><?= $p->tema; ?></td>
-          <td><?= $p->subtema; ?></td>
-          <td><?= $p->pembelajaran; ?></td>
           <td>
               <center>
               <button type="button" data-toggle="modal" data-target="#exampleModalCenter<?=$no?>" class="btn btn-info"><i class="fas fa-info-circle"></i></button>
@@ -57,7 +51,14 @@
                 </button>
                 </div>
                 <div class="modal-body">
-               
+                  <?= ($p->gambar == '') ? '' : '<img src="'.base_url('aset/gambar/'.$p->gambar).'" width="100px" > <br>' ?> 
+                  <?= $p->soal; ?> <br>
+                  <?= $p->pilihan_A; ?> <br>
+                  <?= $p->pilihan_B; ?> <br>
+                  <?= $p->pilihan_C; ?> <br>
+                  <strong>Jawaban</strong>  <br>
+                  <?php $j = $p->jawaban; echo $p->$j?>
+                  <?= $p->pembahasan; ?> <br>
                 </div>
                 <div class="modal-footer">
                 </div>

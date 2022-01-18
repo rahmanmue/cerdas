@@ -16,7 +16,7 @@ class Mapel extends CI_Controller {
         $template = 'index';
 		$listMapel = $this->M_Mapel->list();
 		$data=[
-		'judul'=>'Mata Pelajaran',
+		'title'=>'Mata Pelajaran',
 		'listMapel'=> $listMapel,
 		'content'=>'admin/list_mapel'
 		];

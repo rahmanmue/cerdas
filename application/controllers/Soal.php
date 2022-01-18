@@ -8,7 +8,7 @@ class Soal extends CI_Controller {
       parent::__construct();
     //   login();
     //   onlySuperAdmin();
-      $this->load->Model(['M_Soal']);
+      $this->load->Model(['M_Soal','M_Materi']);
    }
 
 	public function index()
@@ -16,7 +16,7 @@ class Soal extends CI_Controller {
 		$template = 'index';
 		$listSoal = $this->M_Soal->list();
 		$data=[
-		'judul'=>'Soal',
+		'title'=>'Soal',
 		'listSoal'=> $listSoal,
 		'content'=>'admin/list_soal'
 		];
@@ -27,23 +27,19 @@ class Soal extends CI_Controller {
  public function tambah(){
     $template = 'index';
 
-    $this->form_validation->set_rules('tema', 'Tema', 'required');
     $this->form_validation->set_rules('kelas', 'Kelas', 'required');
-    $this->form_validation->set_rules('subtema', 'Sub Tema', 'required');
-    $this->form_validation->set_rules('pembelajaran', 'Pembelajaran', 'required');
     $this->form_validation->set_rules('soal', 'Soal', 'required');
     $this->form_validation->set_rules('pilihan_A', 'Pilihan A', 'required');
     $this->form_validation->set_rules('pilihan_B', 'Pilihan B', 'required');
     $this->form_validation->set_rules('pilihan_C', 'Pilihan C', 'required');
     $this->form_validation->set_rules('pilihan_D', 'Pilihan D', 'required');
-
    
 
     if($this->form_validation->run()==FALSE){
        $data=[
           'title'=>'Tambah Pembahasan',
           'content'=>'admin/form_soal',
-        //   'mapel'=>$this->M_Mapel->getAll(),
+          'listMateri' => $this->M_Materi->list(),
           'action'=>base_url('soal/tambah'),
           'button'=>'Tambah'
        ];
@@ -51,15 +47,12 @@ class Soal extends CI_Controller {
     }else{
        $data=[
            'kelas'=>$this->input->post('kelas',true),
-           'tema'=>$this->input->post('tema',true),
-           'subtema'=>$this->input->post('subtema',true),
-           'pembelajaran'=>$this->input->post('pembelajaran',true),
            'soal'=>$this->input->post('soal',true),
-        //    'id_mapel'=>$this->input->post('id_mapel',true),
-           'pilihan_A'=>$this->input->post('pilihan_A',true),
-           'pilihan_B'=>$this->input->post('pilihan_B',true),
-           'pilihan_C'=>$this->input->post('pilihan_C',true),
-           'pilihan_D'=>$this->input->post('pilihan_D',true),
+           'id_materi'=>$this->input->post('id_materi',true),
+           'pilihan_A'=>'A. '.$this->input->post('pilihan_A',true),
+           'pilihan_B'=>'B. '.$this->input->post('pilihan_B',true),
+           'pilihan_C'=>'C. '.$this->input->post('pilihan_C',true),
+           'pilihan_D'=>'D. '.$this->input->post('pilihan_D',true),
            'jawaban'=>$this->input->post('jawaban',true),
            'gambar'=>$this->M_Soal->uploadGambar()
        ];
@@ -75,10 +68,7 @@ class Soal extends CI_Controller {
  public function edit(){
     $template = 'index';
 
-    $this->form_validation->set_rules('tema', 'Tema', 'required');
     $this->form_validation->set_rules('kelas', 'Kelas', 'required');
-    $this->form_validation->set_rules('subtema', 'Sub Tema', 'required');
-    $this->form_validation->set_rules('pembelajaran', 'Pembelajaran', 'required');
     $this->form_validation->set_rules('soal', 'Soal', 'required');
     $this->form_validation->set_rules('pilihan_A', 'Pilihan A', 'required');
     $this->form_validation->set_rules('pilihan_B', 'Pilihan B', 'required');
@@ -91,8 +81,8 @@ class Soal extends CI_Controller {
 		$data=[
 			'title'=>'Edit Pembahasan',
 			'content'=>'admin/form_soal',
-            // 'mapel'=>$this->M_Mapel->getAll(),
-			'soal'=>$this->M_Soal->detail($this->input->post('id_soal')),
+         'listMateri' => $this->M_Materi->list(),
+         'soal'=>$this->M_Soal->detail($this->input->post('id_soal')),
 			'action'=>base_url('soal/edit'),
 			'button'=>'Edit'
 		 ];
@@ -101,11 +91,8 @@ class Soal extends CI_Controller {
     }else{
         $data=[
             'kelas'=>$this->input->post('kelas',true),
-            'tema'=>$this->input->post('tema',true),
-            'subtema'=>$this->input->post('subtema',true),
-            'pembelajaran'=>$this->input->post('pembelajaran',true),
             'soal'=>$this->input->post('soal',true),
-            // 'id_mapel'=>$this->input->post('id_mapel',true),
+            'id_materi'=>$this->input->post('id_materi',true),
             'pilihan_A'=>$this->input->post('pilihan_A',true),
             'pilihan_B'=>$this->input->post('pilihan_B',true),
             'pilihan_C'=>$this->input->post('pilihan_C',true),

@@ -10,20 +10,24 @@
           <th scope="col">No</th>
           <th scope="col">Judul</th>
           <th scope="col">Kelas</th>
-          <th scope="col">Pembelajaran</th>
+          <th scope="col">Materi</th>
           <th scope="col"><center>Aksi</center></th>
           </tr>
         </thead>
         <tbody>
 
-        <?php $no=1; 
-        foreach($listVideo as $v){ ?>
+        <?php 
+        $this->load->Model('M_Materi');
+        $no=1; 
+        foreach($listVideo as $v){ 
+            $materi = $this->M_Materi->detail($v->id_materi);
+        ?>
 
           <tr>
           <th scope="row"><?= $no; ?></th>
           <td><?= $v->judul; ?></td>
           <td><?= $v->kelas; ?></td>
-          <td><?= $v->pembelajaran; ?></td>
+          <td>Tema <?= $materi->tema ?> Subtema <?= $materi->subtema ?> Pembelajaran <?= $materi->pembelajaran ?></td>
           <td>
               <center>
               <button type="button" data-toggle="modal" data-target="#exampleModalCenter<?=$no?>" class="btn btn-info"><i class="fas fa-info-circle"></i></button>
@@ -41,7 +45,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Video Pembelajaran <?=$v->pembelajaran?></h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Video Pembelajaran </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

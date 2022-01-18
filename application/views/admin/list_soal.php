@@ -8,24 +8,24 @@
         <thead class="thead-dark">
           <tr>
           <th scope="col">No</th>
+          <th scope="col">Materi</th>
           <th scope="col">Kelas</th>
-          <th scope="col">Tema</th>
-          <th scope="col">Sub Tema</th>
-          <th scope="col">Pembelajaran</th>
           <th scope="col"><center>Aksi</center></th>
           </tr>
         </thead>
         <tbody>
 
         <?php $no=1; 
-        foreach($listSoal as $s){ ?>
+        $this->load->Model('M_Materi');
+        foreach($listSoal as $s){ 
+          $materi = $this->M_Materi->detail($s->id_materi);
+          ?>
 
           <tr>
           <th scope="row"><?= $no; ?></th>
+          <td>Tema <?= $materi->tema ?> Subtema <?= $materi->subtema ?> Pembelajaran <?= $materi->pembelajaran ?></td>
           <td><?= $s->kelas; ?></td>
-          <td><?= $s->tema; ?></td>
-          <td><?= $s->subtema; ?></td>
-          <td><?= $s->pembelajaran; ?></td>
+
           <td>
               <center>
               <button type="button" data-toggle="modal" data-target="#exampleModalCenter<?=$no?>" class="btn btn-info"><i class="fas fa-info-circle"></i></button>
@@ -49,6 +49,15 @@
                 </button>
                 </div>
                 <div class="modal-body">
+
+                  <?= ($s->gambar == '') ? '' : '<img src="'.base_url('aset/gambar/'.$s->gambar).'" width="100px" > <br>' ?> 
+                  <?= $s->soal; ?> <br>
+                  <?= $s->pilihan_A; ?> <br>
+                  <?= $s->pilihan_B; ?> <br>
+                  <?= $s->pilihan_C; ?> <br>
+                  <?= $s->pilihan_D; ?> <br>
+                  <strong>Jawaban</strong>  <br>
+                  <?php $j = $s->jawaban; echo $s->$j?>
                
                 </div>
                 <div class="modal-footer">

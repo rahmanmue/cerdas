@@ -35,4 +35,14 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="aset/favicon/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
+
+<script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/4/tinymce.min.js'></script>
+  <script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+  tinymce.init({
+    selector: '#soal'
+  });
+  </script>
   

@@ -8,7 +8,7 @@ class Video extends CI_Controller {
       parent::__construct();
     //   login();
     //   onlySuperAdmin();
-      $this->load->Model('M_Video');
+      $this->load->Model(['M_Video','M_Materi']);
    }
 
 	public function index()
@@ -16,7 +16,7 @@ class Video extends CI_Controller {
 		$template = 'index';
 		$listVideo = $this->M_Video->list();
 		$data=[
-		'judul'=>'Video Pembelajaran',
+		'title'=>'Video Pembelajaran',
 		'listVideo'=> $listVideo,
 		'content'=>'admin/list_video'
 		];
@@ -28,16 +28,17 @@ class Video extends CI_Controller {
     $template = 'index';
 
     $this->form_validation->set_rules('judul', 'Judul', 'required');
-    $this->form_validation->set_rules('tema', 'Tema', 'required');
     $this->form_validation->set_rules('kelas', 'Kelas', 'required');
-    $this->form_validation->set_rules('subtema', 'Sub Tema', 'required');
-    $this->form_validation->set_rules('pembelajaran', 'Pembelajaran', 'required');
+   //  $this->form_validation->set_rules('tema', 'Tema', 'required');
+   //  $this->form_validation->set_rules('subtema', 'Sub Tema', 'required');
+   //  $this->form_validation->set_rules('pembelajaran', 'Pembelajaran', 'required');
     $this->form_validation->set_rules('linkvideo', 'Link Video', 'required');
 
     if($this->form_validation->run()==FALSE){
        $data=[
           'title'=>'Tambah Video',
           'content'=>'admin/form_video',
+          'listMateri' => $this->M_Materi->list(),
           'action'=>base_url('video/tambah'),
           'button'=>'Tambah'
        ];
@@ -46,9 +47,10 @@ class Video extends CI_Controller {
        $data=[
           'judul'=>$this->input->post('judul',true),
           'kelas'=>$this->input->post('kelas',true),
-          'tema'=>$this->input->post('tema',true),
-          'subtema'=>$this->input->post('subtema',true),
-          'pembelajaran'=>$this->input->post('pembelajaran',true),
+         //  'tema'=>$this->input->post('tema',true),
+         //  'subtema'=>$this->input->post('subtema',true),
+         //  'pembelajaran'=>$this->input->post('pembelajaran',true),
+          'id_materi'=>$this->input->post('id_materi',true),
           'link_video'=>$this->input->post('linkvideo',true)
        ];
 
@@ -64,10 +66,10 @@ class Video extends CI_Controller {
     $template = 'index';
 
     $this->form_validation->set_rules('judul', 'Judul', 'required');
-    $this->form_validation->set_rules('tema', 'Tema', 'required');
     $this->form_validation->set_rules('kelas', 'Kelas', 'required');
-    $this->form_validation->set_rules('subtema', 'Sub Tema', 'required');
-    $this->form_validation->set_rules('pembelajaran', 'Pembelajaran', 'required');
+   //  $this->form_validation->set_rules('tema', 'Tema', 'required');
+   //  $this->form_validation->set_rules('subtema', 'Sub Tema', 'required');
+   //  $this->form_validation->set_rules('pembelajaran', 'Pembelajaran', 'required');
     $this->form_validation->set_rules('linkvideo', 'Link Video', 'required');
 
 
@@ -75,6 +77,7 @@ class Video extends CI_Controller {
 		$data=[
 			'title'=>'Edit Video',
 			'content'=>'admin/form_video',
+         'listMateri' => $this->M_Materi->list(),
 			'video'=>$this->M_Video->detail($this->input->post('id_video')),
 			'action'=>base_url('video/edit'),
 			'button'=>'Edit'
@@ -85,9 +88,10 @@ class Video extends CI_Controller {
 		$data=[
 			'judul'=>$this->input->post('judul',true),
 			'kelas'=>$this->input->post('kelas',true),
-			'tema'=>$this->input->post('tema',true),
-			'subtema'=>$this->input->post('subtema',true),
-			'pembelajaran'=>$this->input->post('pembelajaran',true),
+			// 'tema'=>$this->input->post('tema',true),
+			// 'subtema'=>$this->input->post('subtema',true),
+			// 'pembelajaran'=>$this->input->post('pembelajaran',true),
+         'id_materi'=>$this->input->post('id_materi',true),
 			'link_video'=>$this->input->post('linkvideo',true)
 		 ];
 

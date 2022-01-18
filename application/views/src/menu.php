@@ -23,8 +23,30 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+          <?php if ($level == 'admin'){  ?>
           <li class="nav-item">
             <a href="#" class="nav-link active">
+            <i class="nav-icon fas fa-swatchbook"></i>
+               <p>
+			          	Materi Pembelajaran
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="<?=base_url()?>materi" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Materi</p>
+                      </a>
+                    </li>
+              </ul>
+          </li>
+
+          <?php } ?>
+          
+          <li class="nav-item">
+            <a href="<?=base_url()?>siswa/video" class="nav-link active">
               <i class="nav-icon fas fa-photo-video"></i>    
               <p>
                 Video Pembelajaran
@@ -37,7 +59,7 @@
                if ($level == 'admin'){ ?>
 
               <li class="nav-item active" >
-                <a href="videokelas1.html" class="nav-link">
+                <a href="<?=base_url()?>video" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Video</p>
                   </a>
@@ -47,7 +69,7 @@
                  for ($i=1; $i<=6; $i++) {
                 ?>
                 <li class="nav-item active" >
-                  <a href="videokelas1.html" class="nav-link">
+                  <a href="<?=base_url('siswa/video/'.$i)?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kelas <?= $i; ?></p>
                   </a>
@@ -61,7 +83,7 @@
          
           
             <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="<?=base_url()?>siswa/pembahasan" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>  
               <p>
                 Pembahasan
@@ -81,7 +103,7 @@
                 </li>
 
                 <li class="nav-item active" >
-                <a href="latihankelas.html" class="nav-link">
+                <a href="<?=base_url()?>pembahasan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pembahasan</p>
                   </a>
@@ -93,7 +115,7 @@
                  for ($i=1; $i<=6; $i++) {
                 ?>
                  <li class="nav-item active" >
-                <a href="latihankelas.html" class="nav-link">
+                <a href="<?=base_url('siswa/pembahasan/'.$i)?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kelas <?= $i; ?></p>
                   </a>
@@ -108,7 +130,7 @@
           </li>
 
             <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="<?=base_url()?>siswa/soal" class="nav-link active">
               <i class=" nav-icon fas fa-tasks"></i>  
               <p>
                 Latihan Soal
@@ -121,7 +143,7 @@
                if ($level == 'admin'){ ?>
 
                 <li class="nav-item active" >
-                <a href="latihankelas.html" class="nav-link">
+                <a href="<?=base_url()?>soal" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Soal</p>
                   </a>
@@ -131,7 +153,7 @@
                  for ($i=1; $i<=6; $i++) {
                 ?>
                  <li class="nav-item active" >
-                <a href="latihankelas.html" class="nav-link">
+                <a href="<?=base_url('siswa/soal/'.$i)?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kelas <?= $i; ?></p>
                   </a>
@@ -146,7 +168,7 @@
 
 		  <li class="nav-item">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-photo-video"></i>    
+              <i class="nav-icon fas fa-gamepad"></i>    
               <p>
 			          	Games
                 <i class="right fas fa-angle-left"></i>

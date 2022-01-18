@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2022 at 02:05 PM
+-- Generation Time: Jan 18, 2022 at 05:24 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -40,8 +40,39 @@ CREATE TABLE `games` (
 
 CREATE TABLE `mata_pelajaran` (
   `id_mapel` int(11) NOT NULL,
-  `nama` varchar(50) NOT NULL
+  `nama_mapel` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mata_pelajaran`
+--
+
+INSERT INTO `mata_pelajaran` (`id_mapel`, `nama_mapel`) VALUES
+(3, 'IPA 2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `materi`
+--
+
+CREATE TABLE `materi` (
+  `id_materi` int(11) NOT NULL,
+  `tema` varchar(10) NOT NULL,
+  `subtema` varchar(10) NOT NULL,
+  `pembelajaran` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `materi`
+--
+
+INSERT INTO `materi` (`id_materi`, `tema`, `subtema`, `pembelajaran`) VALUES
+(1, '1', '1', '1'),
+(2, '1', '1', '2'),
+(3, '1', '1', '3'),
+(4, '1', '1', '4'),
+(5, '1', '1', '5');
 
 -- --------------------------------------------------------
 
@@ -51,12 +82,25 @@ CREATE TABLE `mata_pelajaran` (
 
 CREATE TABLE `pembahasan` (
   `id_pembahasan` int(11) NOT NULL,
+  `id_mapel` int(11) NOT NULL,
   `kelas` enum('1','2','3','4','5','6') NOT NULL,
-  `mata_pelajaran` int(11) NOT NULL,
-  `tema` varchar(20) NOT NULL,
-  `subtema` varchar(20) NOT NULL,
-  `pembelajaran` int(11) NOT NULL
+  `gambar` varchar(255) NOT NULL,
+  `soal` varchar(255) NOT NULL,
+  `pilihan_A` varchar(50) NOT NULL,
+  `pilihan_B` varchar(50) NOT NULL,
+  `pilihan_C` varchar(50) NOT NULL,
+  `jawaban` varchar(10) NOT NULL,
+  `pembahasan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pembahasan`
+--
+
+INSERT INTO `pembahasan` (`id_pembahasan`, `id_mapel`, `kelas`, `gambar`, `soal`, `pilihan_A`, `pilihan_B`, `pilihan_C`, `jawaban`, `pembahasan`) VALUES
+(1, 3, '1', 'download.jpg', 'ini soal', 'sdadsa', 'asd', 'asd', 'pilihan_A', ''),
+(2, 3, '1', 'download1.jpg', '1', '1', '1', '1', 'pilihan_A', ''),
+(4, 3, '2', '', 'asdajsnajsdnas', 'A. aa', 'B. bb', 'C. cc', 'pilihan_A', '<p>asdmad </p>');
 
 -- --------------------------------------------------------
 
@@ -66,16 +110,27 @@ CREATE TABLE `pembahasan` (
 
 CREATE TABLE `soal` (
   `id_soal` int(11) NOT NULL,
+  `id_materi` int(11) NOT NULL,
   `soal` text NOT NULL,
-  `pilihan` text NOT NULL,
-  `jawaban` text NOT NULL,
-  `pembahasan` text NOT NULL,
-  `gambar_soal` varchar(255) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
   `kelas` enum('1','2','3','4','5','6') NOT NULL,
-  `tema` varchar(10) NOT NULL,
-  `subtema` varchar(10) NOT NULL,
-  `pembelajaran` varchar(10) NOT NULL
+  `pilihan_A` varchar(50) NOT NULL,
+  `pilihan_B` varchar(50) NOT NULL,
+  `pilihan_C` varchar(50) NOT NULL,
+  `pilihan_D` varchar(50) NOT NULL,
+  `jawaban` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `soal`
+--
+
+INSERT INTO `soal` (`id_soal`, `id_materi`, `soal`, `gambar`, `kelas`, `pilihan_A`, `pilihan_B`, `pilihan_C`, `pilihan_D`, `jawaban`) VALUES
+(1, 1, 'aksdsa', 'banteng.png', '1', 'ahh', 's', 'd', 'd', 'pilihan_A'),
+(2, 1, 's', '', '3', 's', 's', 'ss', 'D. s', 'pilihan_A'),
+(3, 1, '1', '', '5', 'Asd', 'a', 'a', 'a', 'pilihan_A'),
+(4, 1, 'soal', '', '1', 'A. ini', 'B. itu', 'C. bb', 'D. kuku', 'pilihan_B'),
+(5, 1, 'ssad', '', '1', 'A. as', 'B. sa', 'C. sds', 'D. ad', 'pilihan_A');
 
 -- --------------------------------------------------------
 
@@ -109,7 +164,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `status`) VALUES
-(1, 'admin', 'admin@gmail.com', '$2y$10$vv4ivxE/q7fJTLP4/yFDvOtvGRblox/NbBJGjQVFimOE08vDk4q5.', 'admin');
+(1, 'admin', 'admin@gmail.com', '$2y$10$vv4ivxE/q7fJTLP4/yFDvOtvGRblox/NbBJGjQVFimOE08vDk4q5.', 'admin'),
+(2, 'siswa1', 'siswa@gmail.com', '$2y$10$FMwnEvs/6dM5F/5LOoJgregh87gRrHoD7hdGBRdV45c6q4pq8eAFu', 'siswa');
 
 -- --------------------------------------------------------
 
@@ -119,12 +175,19 @@ INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `status`) VALUES
 
 CREATE TABLE `video` (
   `id_video` int(11) NOT NULL,
+  `id_materi` int(11) NOT NULL,
   `judul` varchar(20) NOT NULL,
   `kelas` enum('1','2','3','4','5','6') NOT NULL,
-  `tema` int(20) NOT NULL,
-  `subtema` int(20) NOT NULL,
-  `pembelajaran` int(20) NOT NULL
+  `link_video` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `video`
+--
+
+INSERT INTO `video` (`id_video`, `id_materi`, `judul`, `kelas`, `link_video`) VALUES
+(1, 1, 'test', '1', 'https://video.cerdasbelajar.id/embed?m=j6CjgfC9p'),
+(8, 3, 'df', '2', '21');
 
 --
 -- Indexes for dumped tables
@@ -141,6 +204,12 @@ ALTER TABLE `games`
 --
 ALTER TABLE `mata_pelajaran`
   ADD PRIMARY KEY (`id_mapel`);
+
+--
+-- Indexes for table `materi`
+--
+ALTER TABLE `materi`
+  ADD PRIMARY KEY (`id_materi`);
 
 --
 -- Indexes for table `pembahasan`
@@ -186,19 +255,25 @@ ALTER TABLE `games`
 -- AUTO_INCREMENT for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
-  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `materi`
+--
+ALTER TABLE `materi`
+  MODIFY `id_materi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pembahasan`
 --
 ALTER TABLE `pembahasan`
-  MODIFY `id_pembahasan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pembahasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `soal_games`
@@ -210,13 +285,13 @@ ALTER TABLE `soal_games`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `video`
 --
 ALTER TABLE `video`
-  MODIFY `id_video` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_video` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
