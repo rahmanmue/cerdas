@@ -53,7 +53,11 @@ class M_Soal extends CI_Model{
    
    public function hapus($id){
         $filename = $this->detail($id);
-        unlink(FCPATH.'aset/gambar/'. $filename->gambar);
-        $this->db->delete('soal',['id_soal'=>$id]);
+        if($filename->gambar == ''){
+         $this->db->delete('soal',['id_soal'=>$id]);
+        }else{
+           unlink(FCPATH.'aset/gambar/'. $filename->gambar);
+           $this->db->delete('soal',['id_soal'=>$id]);
+        }
    }
 }

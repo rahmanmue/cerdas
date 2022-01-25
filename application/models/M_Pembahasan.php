@@ -53,7 +53,11 @@ class M_Pembahasan extends CI_Model{
    
    public function hapus($id){
         $filename = $this->detail($id);
-        unlink(FCPATH.'aset/gambar/'. $filename->gambar);
-        $this->db->delete('pembahasan',['id_pembahasan'=>$id]);
+        if($filename->gambar == ''){
+            $this->db->delete('pembahasan',['id_pembahasan'=>$id]);
+        }else{
+            unlink(FCPATH.'aset/gambar/'. $filename->gambar);
+            $this->db->delete('pembahasan',['id_pembahasan'=>$id]);
+        }
    }
 }

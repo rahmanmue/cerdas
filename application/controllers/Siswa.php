@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+date_default_timezone_set('Asia/Jakarta');
 
 class Siswa extends CI_Controller {
 
 	public function __construct()
     {
         parent::__construct();
-        $this->load->Model(['M_Siswa']);
+        $this->load->Model(['M_Siswa','M_Games']);
     }
 	
 	public function index(){
@@ -61,5 +62,36 @@ class Siswa extends CI_Controller {
 		$this->load->view($template,$data);
 
 	}
+
+	public function games(){
+		$template = 'index';
+		$data=[
+			'judul'=>'Games',
+			'contentHeader'=>'siswa/content_header',
+			'content'=>'siswa/games'
+		];
+
+		$this->load->view($template,$data);
+
+}
+
+public function tambahGames(){
+	$template = 'index';
+	
+	
+	$data=[
+		'id_user' =>$this->input->post('id_user',true),
+		'level' =>$this->input->post('level',true),
+		'skor' =>$this->input->post('skor',true),
+		'lama_pengerjaan' =>$this->input->post('lama_pengerjaan',true),
+		'waktu_pengerjaan' =>date('Y-m-d H:i:s')
+	];
+	
+	$this->M_Games->tambah($data);
+	
+	redirect('siswa/games');  
+
+
+}
 
 }

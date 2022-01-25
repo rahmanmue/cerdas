@@ -3,14 +3,71 @@
 ?>
  -->
 
+ <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+ 
+  width: 100%;
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  
+ 
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+ 
+  position: relative;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ 
+  
+</style>
+
 <div class="row">
 
-<?php  
+<?php   $i = 1;
 foreach($listMateri as $m) {
+  if ($i % 2 == 0){
+    $bg = 'success';
+  }else{
+    $bg = 'info';
+  }
 ?>
 <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-<?=$bg?>">
               <div class="inner"> 
           <!-- Trigger/Open The Modal -->
                 <h6> Tema <?= $m->tema ?> Subtema <?= $m->subtema?> Pembelajaran <?=$m->pembelajaran?></h6> 
@@ -54,6 +111,6 @@ foreach($listMateri as $m) {
               <a href="#" id="myBtn" class="small-box-footer myBtn_multi"> <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-  <?php  } ?>  
+  <?php $i++; } ?>  
 
   

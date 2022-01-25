@@ -5,9 +5,9 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Home</a>
+        <a href="<?=base_url()?>" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <li class="nav-item">
         <a href="<?=base_url('logout')?>" class="nav-link ">Logout</a>
       </li>
        

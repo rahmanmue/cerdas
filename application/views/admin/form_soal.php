@@ -18,7 +18,7 @@
               <?php foreach ($listMateri as $m) { ?>
                 <option value="<?=$m->id_materi?>"
                 <?php if ($button == "Edit"){
-                      ($soal->id_materi == $m->id_materi ) ? "selected": '';
+                     echo ($soal->id_materi == $m->id_materi ) ? "selected": '';
                 }?>>
                 
                 Tema <?=$m->tema?> Subtema <?=$m->subtema?> Pembelajaran <?=$m->pembelajaran?>

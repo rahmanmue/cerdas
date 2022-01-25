@@ -42,7 +42,7 @@ class M_User extends CI_Model{
    }
    
    public function edit($data){
-      $this->db->where('id_user', $this->input->post('id',true));
+      $this->db->where('id_user', $this->input->post('id_user',true));
       $this->db->update('user',$data);
    }
    

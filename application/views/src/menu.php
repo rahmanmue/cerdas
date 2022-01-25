@@ -46,7 +46,7 @@
           <?php } ?>
           
           <li class="nav-item">
-            <a href="<?=base_url()?>siswa/video" class="nav-link active">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-photo-video"></i>    
               <p>
                 Video Pembelajaran
@@ -83,7 +83,7 @@
          
           
             <li class="nav-item">
-            <a href="<?=base_url()?>siswa/pembahasan" class="nav-link active">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>  
               <p>
                 Pembahasan
@@ -130,7 +130,7 @@
           </li>
 
             <li class="nav-item">
-            <a href="<?=base_url()?>siswa/soal" class="nav-link active">
+            <a href="#" class="nav-link active">
               <i class=" nav-icon fas fa-tasks"></i>  
               <p>
                 Latihan Soal
@@ -175,12 +175,27 @@
               </p>
             </a>
 			<ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="game.html" class="nav-link ">
+        <?php
+            if ($level == 'admin'){ ?>
+
+            <li class="nav-item">
+                <a href="<?=base_url('games')?>" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Aritmatika</p>
                 </a>
               </li>
+
+            <?php } else { ?>
+              
+             <li class="nav-item">
+                <a href="<?=base_url('siswa/games')?>" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Aritmatika</p>
+                </a>
+              </li>
+
+          <?php } ?>
+             
 			  </ul>
 			</li>
            

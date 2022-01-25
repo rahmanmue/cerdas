@@ -9,6 +9,7 @@ class Video extends CI_Controller {
     //   login();
     //   onlySuperAdmin();
       $this->load->Model(['M_Video','M_Materi']);
+      adaUserId();
    }
 
 	public function index()

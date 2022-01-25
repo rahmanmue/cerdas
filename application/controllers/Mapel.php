@@ -9,6 +9,7 @@ class Mapel extends CI_Controller {
     {
         parent::__construct();
         $this->load->Model('M_Mapel');
+        adaUserId();
     }
 	
 	

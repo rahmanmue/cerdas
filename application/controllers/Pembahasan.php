@@ -9,6 +9,8 @@ class Pembahasan extends CI_Controller {
     //   login();
     //   onlySuperAdmin();
       $this->load->Model(['M_Pembahasan','M_Mapel','M_Materi']);
+      adaUserId();
+      
    }
 
 	public function index()
@@ -91,7 +93,6 @@ class Pembahasan extends CI_Controller {
     }else{
         $data=[
             'kelas'=>$this->input->post('kelas',true),
-            'id_materi'=>$this->input->post('pembelajaran',true),
             'soal'=>$this->input->post('soal',true),
             'id_mapel'=>$this->input->post('id_mapel',true),
             'pilihan_A'=>$this->input->post('pilihan_A',true),

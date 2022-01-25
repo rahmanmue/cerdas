@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">  
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">   
+		<link rel="icon" type="image/png" href="<?=base_url()?>aset/img/logo.png" >   
         <link rel = "stylesheet"  href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">   
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>  
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"> </script>  
@@ -46,7 +47,7 @@ html {scroll-behavior:smooth;}
 	<body>
 
 		<!-- Header -->
-		<div class="container"></div>
+	
 		<header style="background-color: #8990b7;" id="header" class="header-area transparent-nav">
 			
 
@@ -56,7 +57,7 @@ html {scroll-behavior:smooth;}
 					<!-- Logo -->
 					<div class="navbar-brand">
 						<a class="logo" href="index.html">
-							<img src="<?=base_url()?>aset/img/logo1.png" alt="logo" style="width: 100px; height: 100px;">
+							<img src="<?=base_url()?>aset/img/logo2.png" alt="logo" style="width: 80px; height: 50px; margin-bottom: 10px;">
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -71,13 +72,13 @@ html {scroll-behavior:smooth;}
 				<!-- Navigation -->
 				<nav id="nav">
 					<ul class="main-menu nav navbar-right text-center">
-						<li class="lead"><a href="#selamat" style="color: white; margin-right: 10px;">Home</a></li>
-						<li class="lead"><a href="#pelajaran" style="color: white; margin-right: 10px;">Pelajaran</a></li>
-						<li class="lead"><a href="#beasiswa" style="color: white; margin-right: 10px;">Beasiswa</a></li>
-						<li class="lead"><a href="#video" style="color: white; margin-right: 10px;">Video</a></li>
-						<li class="lead"><a href="#testimoni" style="color: white; margin-right: 10px;">Testimoni</a></li>
-						<li class="lead"><a href="<?=base_url()?>login" style="color: white; margin-right: 10px;">Login</a></li>
-						<li class="lead"><a href="#info" style="color: white; margin-right: 30px;">Info</a></li>
+						<li class=""><a href="#selamat" style="color: white; margin-right: 10px;">Home</a></li>
+						<li class=""><a href="#pelajaran" style="color: white; margin-right: 10px;">Pelajaran</a></li>
+						<li class=""><a href="#artikel" style="color: white; margin-right: 10px;">Artikel</a></li>
+						<li class=""><a href="#video" style="color: white; margin-right: 10px;">Video</a></li>
+						<li class=""><a href="#testimoni" style="color: white; margin-right: 10px;">Testimoni</a></li>
+						<li class=""><a href="<?=base_url()?>login" style="color: white; margin-right: 10px;">Login</a></li>
+						<li class=""><a href="#info" style="color: white; margin-right: 30px;">Info</a></li>
 					</ul>
 
 				</nav>
@@ -91,7 +92,7 @@ html {scroll-behavior:smooth;}
 		<div id="home" class="hero-area">
 
 			<!-- Backgound Image -->
-			<img src="<?=base_url()?>aset/img/cerdas2.jpg" alt="" class=" img-responsive" style="height: auto; width: 100%;">
+				<img src="<?=base_url()?>aset/img/cerdas44.jpg" alt="" class=" img-responsive" style="height: 100%; width: 100%;">
 			<!-- /Backgound Image -->
 
 			<div class="home-wrapper">
@@ -190,7 +191,7 @@ html {scroll-behavior:smooth;}
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
 								<a href="#" class="course-img">
-									<img src="<?=base_url()?>aset/img/indo.png" style="height: 183px;">
+									<img src="<?=base_url()?>aset/img/indo.png" style="height: 160px;">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
 								<a class="course-title" href="#">Bahasa Indonesia</a>
@@ -204,7 +205,7 @@ html {scroll-behavior:smooth;}
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
 								<a href="#" class="course-img">
-									<img src="<?=base_url()?>aset/img/mtk.png" style="height: 183px;">
+									<img src="<?=base_url()?>aset/img/mtk.png" style="height: 160px;">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
 								<a class="course-title" href="#">Matematika</a>
@@ -218,7 +219,7 @@ html {scroll-behavior:smooth;}
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
 								<a href="#" class="course-img">
-									<img src="<?=base_url()?>aset/img/ipa.png" style="height: 183px;">
+									<img src="<?=base_url()?>aset/img/ipa.png" style="height: 160px;">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
 								<a class="course-title" href="#">Ilmu Pengetahuan Alam</a>
@@ -231,7 +232,7 @@ html {scroll-behavior:smooth;}
 						<div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
 								<a href="#" class="course-img">
-									<img src="<?=base_url()?>aset/img/ips.png" style="height: 183px;">
+									<img src="<?=base_url()?>aset/img/ips.png" style="height: 160px;">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
 								<a class="course-title" href="#">Ilmu Pengetahuan Sosial</a>
@@ -279,7 +280,7 @@ html {scroll-behavior:smooth;}
 						<!-- <div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
 								<a href="#" class="course-img">
-									<img src="./img/course07.jpg" alt="">
+									<img src="<?=base_url()?>aset/img/course07.jpg" alt="">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
 								<a class="course-title" href="#">How to Get Started in Photography</a>
@@ -296,7 +297,7 @@ html {scroll-behavior:smooth;}
 						<!-- <div class="col-md-3 col-sm-6 col-xs-6">
 							<div class="course">
 								<a href="#" class="course-img">
-									<img src="./img/course08.jpg" alt="">
+									<img src="<?=base_url()?>aset/img/course08.jpg" alt="">
 									<i class="course-link-icon fa fa-link"></i>
 								</a>
 								<a class="course-title" href="#">Typography From A to Z</a>
@@ -326,7 +327,7 @@ html {scroll-behavior:smooth;}
 		<!-- /Courses -->
 
 		<!-- Call To Action -->
-		<div id="beasiswa" class="section">
+		<div id="artikel" class="section">
 
 			<!-- Backgound Image -->
 			<div class="bg-image bg-parallax overlay" style="background-image:url(<?=base_url()?>aset/img/cerdas.png)"></div>
@@ -339,9 +340,9 @@ html {scroll-behavior:smooth;}
 				<div class="row">
 
 					<div class="col-md-6">
-						<h2 class="white-text">Beasiswa</h2>
-						<p class="lead white-text">Dapatkan beasiswa pendidikan senilai ratusan juta rupiah bagi anak yang berprestasi.</p>
-						<a class="main-button icon-button" href="#">Ayo Daftar!</a>
+						<h2 class="white-text">Artikel</h2>
+						<p class="lead white-text">Baca berita terbaru seputar pendidikan dan informasi penting lainnya.</p>
+						<a class="main-button icon-button" href="#">Lanjutkan</a>
 					</div>
 
 				</div>
@@ -375,7 +376,7 @@ html {scroll-behavior:smooth;}
 					</div>
 
 					<div class="col-md-5 col-md-offset-1">
-                    <iframe width="500" height="315" src="https://video.cerdasbelajar.id/embed?m=6z65NwjX0" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="315" src="https://video.cerdasbelajar.id/embed?m=6z65NwjX0" frameborder="0" allowfullscreen></iframe>
 					</div>
 
 				</div>
@@ -403,7 +404,7 @@ html {scroll-behavior:smooth;}
 		<!-- <div id="contact-cta" class="section"> -->
 
 			<!-- Backgound Image -->
-			<!-- <div class="bg-image bg-parallax overlay" style="background-image:url(./img/cerdas.png)"></div> -->
+			<!-- <div class="bg-image bg-parallax overlay" style="background-image:url(<?=base_url()?>aset/img/cerdas.png)"></div> -->
 			<!-- Backgound Image -->
 
 			<!-- container -->
@@ -447,7 +448,7 @@ html {scroll-behavior:smooth;}
                                                         <div class="carousel-item">  
                                                             <div class="card border-0 card-0">  
                                                                 <div class="card profile py-3 px-4">  
-                                                                <div class="text-center"> <img src="<?=base_url()?>aset/img/ortu3.png" class="img-fluid profile-pic"> </div>  
+                                                                <div class="text-center"> <img src="<?=base_url()?>aset/img/ortu3.jpg" class="img-fluid profile-pic"> </div>  
                                                                     <h6 class="mb-0 mt-2 white-text">Ibu Ratna </h6>          </div>
 																	<img class="img-fluid open-quotes" src="<?=base_url()?>aset/img/kutip1.png" width="20" height="20">                                                
                                                                 <p class="content mb-0">Anak saya sangat menyukai aplikasi Cerdas Belajar ini karena cara belajarnya yang unik yaitu melalui gambar, video serta game.</p>
@@ -565,7 +566,7 @@ html {scroll-behavior:smooth;}
 			  Tentang
 			</h6>
 			<p>
-			  <a href="#!" class="text-reset">Beasiswa</a>
+			  <a href="#!" class="text-reset">Artikel</a>
 			</p>
 			<p>
 			  <a href="#!" class="text-reset">Daftar</a>
@@ -588,7 +589,7 @@ html {scroll-behavior:smooth;}
 			<div class="contact__container--text fas fa-home me-3"><a class="font-base-footer font-white" href="mailto:%20info@cerdasbelajar.com"> Kota Sukabumi, Jawa Barat, Indonesia</a></div>
 			<br>
 			<div class="contact__container--text fas fa-envelope me-3"><a class="font-base-footer " href="mailto:%20info@cerdasbelajar.com"> info@cerdasbelajar.com</a></div>
-			<div class="contact__container--text fas fa-phone me-3"><a class=" " href="https://api.whatsapp.com/send/?phone=6285860301670"> 085860301670</a></div>
+			<div class="contact__container--text fas fa-phone me-3"><a class=" " href="https://api.whatsapp.com/send/?phone=6285717170131"> 085717170131</a></div>
 			<!-- <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p> -->
 		  </div>
 		  <!-- Grid column -->
@@ -609,7 +610,7 @@ html {scroll-behavior:smooth;}
 				</div><!--end footer wrapper -->
 
 				<!-- row -->
-				<div id="bottom-footer" class="row" style="background-color: #8990b7;">
+				<div id="bottom-footer" style="background-color: #8990b7; height:70px;">
 
 					<!-- social -->
 				    
@@ -631,6 +632,7 @@ html {scroll-behavior:smooth;}
 
 		</footer>
 		<!-- /Footer -->
+
 
 		<!-- preloader -->
 		<div id='preloader'><div class='preloader'></div></div>
